@@ -49,3 +49,6 @@ Thanks to Cirrus CI and Codemagic for examples and documentations
 
 - [Cirrus CI docker-image-flutter](https://github.com/cirruslabs/docker-images-flutter)
 - [Codemagic Flutter Dockerfile blog post](https://blog.codemagic.io/how-to-dockerize-flutter-apps/)
+- [Publishing Docker to github packages](https://docs.github.com/en/actions/publishing-packages/publishing-docker-images#publishing-images-to-github-packages)
+- [Pulling Docker from private registry](https://linuxhint.com/pull-docker-image-from-private-registry/)
+- [Wokring with the Container registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-container-registry)
