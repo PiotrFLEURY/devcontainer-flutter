@@ -54,7 +54,96 @@
                 "pflannery.vscode-versionlens",
 
                 "davidanson.vscode-markdownlint"
-            ]
+            ],
+            "launch": [
+                {
+                    "name": "Flutter run",
+                    "request": "launch",
+                    "type": "dart"
+                },
+                {
+                    "name": "Flutter run (profile mode)",
+                    "request": "launch",
+                    "type": "dart",
+                    "flutterMode": "profile"
+                },
+                {
+                    "name": "Flutter run (release mode)",
+                    "request": "launch",
+                    "type": "dart",
+                    "flutterMode": "release"
+                },
+                {
+                    "name": "Update golden for selected test file",
+                    "request": "launch",
+                    "type": "dart",
+                    "program": "flutter",
+                    "args": [
+                        "test",
+                        "${file}",
+                        "--update-goldens"
+                    ],
+                    "codeLens": {
+                        "for": [
+                            "run-test",
+                            "run-test-file"
+                        ]
+                    },
+                    "env": {
+                        "FLUTTER_TEST": "true"
+                    }
+                }
+            ],
+            "tasks": [
+                {
+                  "label": "Generate Sources",
+                  "type": "shell",
+                  "command": "dart run build_runner build --delete-conflicting-outputs",
+                  "problemMatcher": []
+                },
+                {
+                  "label": "Update Golden for current file",
+                  "type": "shell",
+                  "command": "flutter test --update-goldens ${file}",
+                  "problemMatcher": []
+                },
+                {
+                  "label": "Update all Goldens",
+                  "type": "shell",
+                  "command": "flutter test --update-goldens",
+                  "problemMatcher": []
+                },
+                {
+                  "label": "Run all tests",
+                  "type": "shell",
+                  "command": "flutter test",
+                  "problemMatcher": []
+                },
+                {
+                  "label": "Format files",
+                  "type": "shell",
+                  "command": "dart format .",
+                  "problemMatcher": []
+                },
+                {
+                  "label": "Activate very good cli",
+                  "type": "shell",
+                  "command": "dart pub global activate very_good_cli",
+                  "problemMatcher": []
+                },
+                {
+                  "label": "Generate lcov HTML report",
+                  "type": "shell",
+                  "command": "flutter test --coverage && genhtml coverage/lcov.info -o coverage/html",
+                  "problemMatcher": []
+                },
+                {
+                  "label": "Check coverage min 80% (very_good_cli)",
+                  "type": "shell",
+                  "command": "very_good test --coverage --min-coverage 80",
+                  "problemMatcher": []
+                }
+              ]
         }
     }
 }
